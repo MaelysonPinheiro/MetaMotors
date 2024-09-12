@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Motors</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+            
+                        const accountDiv = document.getElementById('account');
+            
+                        if (isLoggedIn) {
+                            const username = document.cookie.split(';').find((item) => item.trim().startsWith('username=')).split('=')[1];
+                            
+                            const accountLink = document.createElement('a');
+                            accountLink.href = '#';
+                            accountLink.textContent = 'My Account - ' + username;
+                            
+                            const logoutButton = document.createElement('button');
+                            logoutButton.textContent = 'Logout';
+                            
+                            accountDiv.appendChild(accountLink);
+                            accountDiv.appendChild(logoutButton);
+            
+                            logoutButton.addEventListener('click', () => {
+                                document.cookie = 'isLoggedIn=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                location.reload();  // Recarregar a página para refletir as mudanças
+                            });
+                        } else {
+                            const loginLink = document.createElement('a');
+                            loginLink.href = '/login';
+                            loginLink.textContent = 'LOGIN';
+                            
+                            accountDiv.appendChild(loginLink);
+                        }
+                    });
+                </script>
+            </div>
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="container-about">
+        <section id="about">
+            <h1>About Meta Motors</h1>
+            <p>Welcome to Meta Motors, your trusted destination for high-quality and luxury cars. At Pinheiro Autos, we take pride in providing our customers with a unique car-buying experience. With a passion for excellence and a commitment to customer satisfaction, we strive to exceed your expectations.</p>
+
+            <h2>Our Mission</h2>
+            <p>Our mission is to deliver exceptional vehicles that combine performance, style, and innovation. We believe in building lasting relationships with our customers based on trust, integrity, and transparency.</p>
+
+            <h2>Meet Our Team</h2>
+            <div class="members">
+            <div class="team-member">
+                <img src="img/member.png" alt="Team Member 1">
+                <h3>John Doe</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <img src="img/member.png" alt="Team Member 2">
+                <h3>Jane Smith</h3>
+                <p>Sales Manager</p>
+            </div>
+        </div>
+        </section>
+    </div>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

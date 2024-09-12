@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Motors</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+            
+                        const accountDiv = document.getElementById('account');
+            
+                        if (isLoggedIn) {
+                            const username = document.cookie.split(';').find((item) => item.trim().startsWith('username=')).split('=')[1];
+                            
+                            const accountLink = document.createElement('a');
+                            accountLink.href = '#';
+                            accountLink.textContent = 'My Account - ' + username;
+                            
+                            const logoutButton = document.createElement('button');
+                            logoutButton.textContent = 'Logout';
+                            
+                            accountDiv.appendChild(accountLink);
+                            accountDiv.appendChild(logoutButton);
+            
+                            logoutButton.addEventListener('click', () => {
+                                document.cookie = 'isLoggedIn=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                location.reload(); 
+                            });
+                        } else {
+                            const loginLink = document.createElement('a');
+                            loginLink.href = '/login';
+                            loginLink.textContent = 'LOGIN';
+                            
+                            accountDiv.appendChild(loginLink);
+                        }
+                    });
+                </script>
+            </div>
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="product-banner">
+        <div class="carousel">
+            <div><img src="img/banner-topo.png" alt="Product 2"></div>
+        </div>
+    </div>
+    <div class="produtos">
+        <div class="produto">
+            <h2>BMW 320I M SPORT 2020/2020</h2>
+            <img src="img/320i 2020 sport.png" alt="">
+            <p>Preço: $15,900</p>
+            <p>1 Color</p>
+        </div>
+        <div class="produto">
+            <h2>BMW 328I 2015/2016</h2>
+            <img src="img/328i 2015.png" alt="">
+            <p>Preço: $12,800</p>
+            <p>1 Color</p>
+
+        </div>
+        <div class="produto">
+            <h2>BMW M5 2018/2018</h2>
+            <img src="img/M5 2018.png" alt="">
+            <p>Preço: $61,900</p>
+            <p>1 Color</p>
+        </div>
+    </div>
+    <div class="produtos">
+        <div class="produto">
+            <h2>NISSAN SENTRA 2023/2023</h2>
+            <img src="img/SENTRA.png" alt="">
+            <p>Preço: $19,500</p>
+            <p>1 Color</p>
+        </div>
+        <div class="produto">
+            <h2>GOLF GTI 2024/2024</h2>
+            <img src="img/GOLF 2024 GTI.png" alt="">
+            <p>Preço: $34,800</p>
+            <p>1 Color</p>
+        </div>
+        <div class="produto">
+            <h2>TOYOTA TUNDRA 2023/2024</h2>
+            <img src="img/tundra 2023.png" alt="">
+            <p>Preço: $69,900</p>
+            <p>1 Color</p>
+        </div>
+    </div>
+    <div class="produtos">
+        <div class="produto">
+            <h2>COROLLA GR 2024/2024</h2>
+            <img src="img/COROLLA.png" alt="">
+            <p>Preço: $52,990</p>
+            <p>1 Color</p>
+        </div>
+        <div class="produto">
+            <h2>CADILLAC ESCALADE 2020/2020</h2>
+            <img src="img/ESCALADE.png" alt="">
+            <p>Preço: $75,600</p>
+            <p>1 Color</p>
+        </div>
+        <div class="produto">
+            <h2>ROLLS-ROYCE CULLINAN 2022/2022</h2>
+            <img src="img/ROLLS-ROYCE CULLINAN.png" alt="">
+            <p>Preço: $335,800</p>
+            <p>1 Color</p>
+        </div>
+    </div>
+    <div  class="botao-index-op">
+        <a href="product.html">VER MAIS OPÇÕES</a>
+    </div>
+
+<h2 id="comenth2">Deixe um comentário</h2>
+<form id="comentarioForm">
+    <input type="text" id="comentario" placeholder="Escreva seu comentário aqui...">
+    <input type="number" id="avaliacao" min="1" max="5" placeholder="Avaliação (1-5)">
+    <button type="submit">Enviar</button>
+</form>
+
+<div id="comentariosList"></div>
+
+<div id="comentariosList"></div>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>    
+</body>
+</html>

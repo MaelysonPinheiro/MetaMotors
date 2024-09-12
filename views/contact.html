@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Motors</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+            
+                        const accountDiv = document.getElementById('account');
+            
+                        if (isLoggedIn) {
+                            const username = document.cookie.split(';').find((item) => item.trim().startsWith('username=')).split('=')[1];
+                            
+                            const accountLink = document.createElement('a');
+                            accountLink.href = '#';
+                            accountLink.textContent = 'My Account - ' + username;
+                            
+                            accountDiv.appendChild(accountLink);
+                        } else {
+                            const loginLink = document.createElement('a');
+                            loginLink.href = '/login';
+                            loginLink.textContent = 'LOGIN';
+                            
+                            accountDiv.appendChild(loginLink);
+                        }
+                    });
+                </script>
+            </div>
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="container-form"> 
+        <form id="formulario" method="post" action="/enviar-contato">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome"  required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="user@gmail.com" required>
+    
+            <label for="carroInteresse">Carro de Interesse:</label>
+            <input type="text" id="carroInteresse" name="carroInteresse" placeholder="BMW M5" required>
+    
+            <button id="form-contact-button" type="button" onclick="validarFormulario()">Enviar</button>
+        </form>
+    </div>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

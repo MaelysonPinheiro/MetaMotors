@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Motors</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+            
+                        const accountDiv = document.getElementById('account');
+            
+                        if (isLoggedIn) {
+                            const username = document.cookie.split(';').find((item) => item.trim().startsWith('username=')).split('=')[1];
+                            
+                            const accountLink = document.createElement('a');
+                            accountLink.href = '#';
+                            accountLink.textContent = 'My Account - ' + username;
+                            
+                            const logoutButton = document.createElement('button');
+                            logoutButton.textContent = 'Logout';
+                            
+                            accountDiv.appendChild(accountLink);
+                            accountDiv.appendChild(logoutButton);
+            
+                            logoutButton.addEventListener('click', () => {
+                                document.cookie = 'isLoggedIn=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                                console.log("Logout efetuado, redirecionando para index.html...");
+                                window.location.href = '/index.html';  
+                            });
+                        } else {
+                            const loginLink = document.createElement('a');
+                            loginLink.href = '/login';
+                            loginLink.textContent = 'LOGIN';
+                            
+                            accountDiv.appendChild(loginLink);
+                        }
+                    });
+                </script>
+            </div>
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="favorito">
+        <div id="favorito1">
+            <h2>Carros Favoritos</h2>
+            <div id="favoritos">
+            </div>
+        </div>
+        <div id="pedido-info">
+            <h2>Meu Pedido</h2>
+            <p id="pedido-numero"></p>
+            <p id="pedido-status"></p>
+        </div>
+    </div>
+
+    <div class="saldo">
+        <h2>Saldo da Conta</h2>
+        <div id="saldoAtual">Saldo Atual: $0.00</div>
+        <button id="adicionarSaldoBtn">Adicionar Saldo</button>
+
+        <div id="modalAdicionarSaldo" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form id="adicionarSaldoForm">
+                    <label for="saldoInput">Digite o valor a ser adicionado:</label>
+                    <input type="number" id="saldoInput" name="saldoInput" required>
+                    <label for="opcaoPagamento">Selecione o método de pagamento:</label>
+                    <select id="opcaoPagamento" name="opcaoPagamento" required>
+                        <option value="cartao">Cartão</option>
+                        <option value="pix">PIX</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                    <button type="submit">Confirmar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <form id="updateUsernameForm" method="post">
+        <label for="newUsername">Novo nome de usuário:</label>
+        <input type="text" id="newUsername" name="newUsername">
+        <button type="submit">Atualizar nome de usuário</button>
+    </form>
+    <form id="updatePasswordForm" method="post">
+        <label for="newPassword">Nova senha:</label>
+        <input type="password" id="newPassword" name="newPassword">
+        <button type="submit">Atualizar senha</button>
+    </form>
+    
+
+    <button id="deleteAccountBtn">Excluir Conta</button>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

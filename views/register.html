@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Meta Motors</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-group #button{
+            cursor: pointer;
+        }
+        .form-group #button:hover{
+            transition: 0.7s;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <a href="login.html">LOGIN</a>
+            </div>
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <div class="page-container">
+        <div class="login-container">
+            <h2>Register</h2>
+            <form id="loginForm" action="/register" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Registrar" id="button">
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+
+
+    <script src="script.js">
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('loginForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    window.location.href = '/index'; // Redireciona para a página de sucesso
+                } else {
+                    alert('Erro ao registrar. Por favor, tente novamente.'); // Exibe uma mensagem de erro
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao registrar. Por favor, tente novamente.'); // Exibe uma mensagem de erro
+            });
+        });
+    });
+    </script>
+</body>
+</html>

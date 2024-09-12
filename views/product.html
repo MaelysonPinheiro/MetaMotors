@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Motors</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="nav-icon">
+        <div id="nav-icon1">
+            <div>
+                <img src="img/icon.png" alt="" class="icon">
+            </div>
+            <div id="account">
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const isLoggedIn = document.cookie.split(';').some((item) => item.trim().startsWith('isLoggedIn='));
+                        const accountDiv = document.getElementById('account');
+
+                    if (accountDiv) { // Verifica se o elemento accountDiv existe
+                        if (isLoggedIn) {
+                            const username = document.cookie.split(';').find((item) => item.trim().startsWith('username=')).split('=')[1];
+            
+                        const accountLink = document.createElement('a');
+                        accountLink.href = 'account.html';  
+                        accountLink.textContent = 'My Account - ' + username;
+            
+                        const logoutButton = document.createElement('button');
+                        logoutButton.textContent = 'Logout';
+            
+                        accountDiv.appendChild(accountLink);
+                        accountDiv.appendChild(logoutButton);
+
+                        logoutButton.addEventListener('click', () => {
+                            document.cookie = 'isLoggedIn=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                            document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                            location.reload();  
+                        });
+                    } else {
+                        const loginLink = document.createElement('a');
+                        loginLink.href = '/login';  
+                        loginLink.textContent = 'LOGIN';
+            
+                        accountDiv.appendChild(loginLink);
+                    }
+                    } else {
+                        console.error('Element with ID "account" not found');
+                    }
+                    });
+
+                </script>
+            </div>
+            
+            <div id="call">
+                <p>CALL 088 995 873</p>
+            </div>
+            <div class="navbar">
+                <div class="carrinho">
+                    <button onclick="showCart()">Carrinho</button>
+                    <span class="count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav id="nav-bar">
+        <a href="index.html">HOME</a>
+        <a href="product.html">PRODUCT TYPES</a>
+        <a href="about.html">ABOUT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    <label for="marcaSelect">Filtrar por Marca:</label>
+        <select id="marcaSelect">
+            <option value="todos">Todos</option>
+            <option value="bmw">BMW</option>
+            <option value="honda">Honda</option>
+            <option value="toyota">Toyota</option>
+            <option value="nissan">Nissan</option>
+            <option value="cadillac">Cadillac</option>
+            <option value="vw">Volkswagen</option>
+            <option value="subaru">Subaru</option>
+            <option value="ford">Ford</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="tesla">Tesla</option>
+            <option value="rolls-royce">Rolls-Royce</option>
+            <option value="especial">Especiais</option>
+        </select>
+    <div class="produtos">
+            <div class="produto bmw" id="produto-0">
+                <h2>BMW 320I M SPORT 2020/2020</h2>
+                <img src="img/320i 2020 sport.png" alt="">
+                <button class="like-btn" data-car="BMW 320i 2020">❤️</button>
+                <p id="price-0" data-price="25900">Preço: US$25,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('BMW 320I M SPORT', 'Carro 0')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(0)">Mostrar Informações</button>
+                <div class="info-carro" id="info-0">
+                    <img src="img/320i 2020 sport.png" alt="">
+                    <p>Motor: 2.0 Turbo  <br>
+                        Potencia: 184cv  <br>
+                        Tracao: Traseira  <br>
+                        Milhas: 56.000
+                    </p>
+                    <button onclick="hideInfo(0)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto bmw" id="produto-1">
+                <h2>BMW 328I 2015/2016</h2>
+                <img src="img/328i 2015.png" alt="">
+                <button class="like-btn" data-car="BMW 328i 2015">❤️</button>
+                <p id="price-1" data-price="12800">Preço: US$12,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('BMW 328I 2015','carro 1')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(1)">Mostrar Informações</button>
+                <div class="info-carro" id="info-1">
+                    <img src="img/328i 2015.png" alt="">
+                    <p>Motor: 2.0 Turbo  <br>
+                        Potencia: 240cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 82.000
+                    </p>
+                    <button onclick="hideInfo(1)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto especial" id="produto-2">
+                <h2>KOENIGSEGG CCXR 2010/2010</h2>
+                <img src="img/CCXR.png" alt="">
+                <button class="like-btn" data-car="CCXR 2010">❤️</button>
+                <p id="price-2" data-price="4800000">Preço: US$4,800.000</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('CCXR', 'Carro 2')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(2)">Mostrar Informações</button>
+                <div class="info-carro" id="info-2">
+                    <img src="img/CCXR.png" alt="">
+                    <p>Motor: 4.7 V8 Compressor  <br>
+                        Potencia: 806cv / 93,8kgfm Torque  <br>
+                        Tracao: Traseira  <br>
+                        Milhas: 1.300
+                    </p>
+                    <button onclick="hideInfo(2)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto bmw" id="produto-3">
+                <h2>BMW M5 2018/2018</h2>
+                <img src="img/M5 2018.png" alt="">
+                <button class="like-btn" data-car="BMW M5 2018">❤️</button>
+                <p id="price-3" data-price="61900">Preço: US$61,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('BMW M5 2018', 'Carro 3')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(3)">Mostrar Informações</button>
+                <div class="info-carro" id="info-3">
+                    <img src="img/M5 2018.png" alt="">
+                    <p>Motor: 4.4 V8 Turbo  <br>
+                        Potencia: 600cv  <br>
+                        Tracao: Integral Selecionavel  <br>
+                        Milhas: 34.000
+                    </p>
+                    <button onclick="hideInfo(3)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto nissan" id="produto-4">
+                <h2>NISSAN SENTRA 2023/2023</h2>
+                <img src="img/SENTRA.png" alt="">
+                <button class="like-btn" data-car="Sentra 2023">❤️</button>
+                <p id="price-4" data-price="22500">Preço: US$22,500</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('NISSAN SENTRA', 'Carro 4')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(4)">Mostrar Informações</button>
+                <div class="info-carro" id="info-4">
+                    <img src="img/SENTRA.png" alt="">
+                    <p>Motor: 2.0  <br>
+                        Potencia: 151cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 66.000
+                    </p>
+                    <button onclick="hideInfo(4)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto vw" id="produto-5">
+                <h2>VW GOLF GTI 2024/2024</h2>
+                <img src="img/GOLF 2024 GTI.png" alt="">
+                <button class="like-btn" data-car="Golf GTI 2024">❤️</button>
+                <p>Preço: US$39,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('GOLF GTI 2024', 'Carro 5')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(5)">Mostrar Informações</button>
+                <div class="info-carro" id="info-5">
+                    <img src="img/GOLF 2024 GTI.png" alt="">
+                    <p>Motor: 2.0 Turbo <br>
+                        Potencia: 230cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 37.000
+                    </p>
+                    <button onclick="hideInfo(5)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto especial" id="produto-6">
+                <h2>FERRARI 458 2011/2012</h2>
+                <img src="img/458.png" alt="">
+                <button class="like-btn" data-car="458 2011">❤️</button>
+                <p>Preço: US$215,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('FERRARI 458', 'Carro 6')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(6)">Mostrar Informações</button>
+                <div class="info-carro" id="info-6">
+                    <img src="img/458.png" alt="">
+                    <p>Motor: 4.5 V8  <br>
+                        Potencia: 578cv  <br>
+                        Tracao: Traseira  <br>
+                        Milhas: 16.000
+                    </p>
+                    <button onclick="hideInfo(6)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto toyota" id="produto-7">
+                <h2>TOYOTA TUNDRA 2023/2024</h2>
+                <img src="img/tundra 2023.png" alt="">
+                <button class="like-btn" data-car="TUNDRA 2023">❤️</button>
+                <p>Preço: US$77,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('TOYOTA TUNDRA 2023', 'Carro 7')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(7)">Mostrar Informações</button>
+                <div class="info-carro" id="info-7">
+                    <img src="img/tundra 2023.png" alt="">
+                    <p>Motor: 3.5 V6  <br>
+                        Potencia: 437cv  <br>
+                        Tracao: Traseira  <br>
+                        Milhas: 6.000
+                    </p>
+                    <button onclick="hideInfo(7)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto toyota" id="produto-8">
+                <h2>TOYOTA COROLLA GR 2024/2024</h2>
+                <img src="img/COROLLA.png" alt="">
+                <button class="like-btn" data-car="COROLLA GR 2024">❤️</button>
+                <p>Preço: US$52,990</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('TOYOTA COROLLA GR 2024', 'Carro 8')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(8)">Mostrar Informações</button>
+                <div class="info-carro" id="info-8">
+                    <img src="img/COROLLA.png" alt="">
+                    <p>Motor: 2.0  <br>
+                        Potencia: 305cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 2.300
+                    </p>
+                    <button onclick="hideInfo(8)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto especial" id="produto-9">
+                <h2>NISSAN GT-R R35 2019/2019</h2>
+                <img src="img/R35.png" alt="">
+                <button class="like-btn" data-car="GT-R35 2019">❤️</button>
+                <p>Preço: US$135,600</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('NISSAN GTR-R35 2019', 'Carro 9')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(9)">Mostrar Informações</button>
+                <div class="info-carro" id="info-9">
+                    <img src="img/R35.png" alt="">
+                    <p>Motor: 3.8 V6  <br>
+                        Potencia: 572cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 21.000
+                    </p>
+                    <button onclick="hideInfo(9)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto rolls-royce" id="produto-10">
+                <h2>ROLLS-ROYCE CULLINAN 2022/2022</h2>
+                <img src="img/ROLLS-ROYCE CULLINAN.png" alt="">
+                <button class="like-btn" data-car="ROLLS-ROYCE CULLINAN 2022">❤️</button>
+                <p>Preço: US$335,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('ROLLS-ROYCE CULLINAN 2022', 'Carro 10')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(10)">Mostrar Informações</button>
+                <div class="info-carro" id="info-10">
+                    <img src="img/ROLLS-ROYCE CULLINAN.png" alt="">
+                    <p>Motor: 6.7 V12  <br>
+                        Potencia: 571cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 800
+                    </p>
+                    <button onclick="hideInfo(10)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto nissan" id="produto-11">
+                <h2>NISSAN 350Z 2006/2006</h2>
+                <img src="img/350z.png" alt="">
+                <button class="like-btn" data-car="350Z 2006">❤️</button>
+                <p>Preço: US$14,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('NISSAN 350Z 2006', 'Carro 11')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(11)">Mostrar Informações</button>
+                <div class="info-carro" id="info-11">
+                    <img src="img/350z.png" alt="">
+                    <p>Motor: 3.5 V6  <br>
+                        Potencia: 312cv  <br>
+                        Tracao: Traseira  <br>
+                        Milhas: 116.000
+                    </p>
+                    <button onclick="hideInfo(11)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto subaru" id="produto-12">
+                <h2>SUBARU FORESTER 2016/2017</h2>
+                <img src="img/FORESTER.png" alt="">
+                <button class="like-btn" data-car="FORESTER 2016">❤️</button>
+                <p>Preço: US$17,600</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('SUBARU FORESTER 2016', 'Carro 12')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(12)">Mostrar Informações</button>
+                <div class="info-carro" id="info-12">
+                    <img src="img/FORESTER.png" alt="">
+                    <p>Motor: 2.0 Turbo  <br>
+                        Potencia: 240cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 82.000
+                    </p>
+                    <button onclick="hideInfo(12)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto cadillac" id="produto-13">
+                <h2>CADILLAC ESCALADE 2020/2020</h2>
+                <img src="img/ESCALADE.png" alt="">
+                <button class="like-btn" data-car="ESCALADE 2020">❤️</button>
+                <p>Preço: US$65,600</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('CADILLAC ESCALADE 2020', 'Carro 13')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(13)">Mostrar Informações</button>
+                <div class="info-carro" id="info-13">\
+                    <img src="img/ESCALADE.png" alt="">
+                    <p>Motor: 6.2 V8  <br>
+                        Potencia: 426cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 11.000
+                    </p>
+                    <button onclick="hideInfo(13)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto toyota" id="produto-14">
+                <h2>TOYOTA COROLLA 2022/2023</h2>
+                <img src="img/COROLLA BASE.png" alt="">
+                <button class="like-btn" data-car="COROLLA 2022">❤️</button>
+                <p>Preço: US$22,500</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('TOYOTA COROLLA 2022', 'Carro 14')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(14)">Mostrar Informações</button>
+                <div class="info-carro" id="info-14">
+                    <img src="img/COROLLA BASE.png" alt="">
+                    <p>Motor: 1.8  <br>
+                        Potencia: 144cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 45.000
+                    </p>
+                    <button onclick="hideInfo(14)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto honda" id="produto-15">
+                <h2>HONDA CIVIC COUPÉ 2012/2012</h2>
+                <img src="img/CIVIC.png" alt="">
+                <button class="like-btn" data-car="CIVIC COUPÉ 2012">❤️</button>
+                <p>Preço: US$7,990</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('HONDA CIVIC COUPE 2012', 'Carro 15')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(15)">Mostrar Informações</button>
+                <div class="info-carro" id="info-15">
+                    <img src="img/CIVIC.png" alt="">
+                    <p>Motor: 2.0  <br>
+                        Potencia: 140cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 180.000
+                    </p>
+                    <button onclick="hideInfo(15)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto subaru" id="produto-16">
+                <h2>SUBARU WRX STI 2019/2019</h2>
+                <img src="img/WRX.png" alt="">
+                <button class="like-btn" data-car="WRX 2019">❤️</button>
+                <p>Preço: US$25,600</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('SUBARU WRX STI 2019', 'Carro 16')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(16)">Mostrar Informações</button>
+                <div class="info-carro" id="info-16">
+                    <img src="img/WRX.png" alt="">
+                    <p>Motor: 2.5 Turbo  <br>
+                        Potencia: 310cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 29.000
+                    </p>
+                    <button onclick="hideInfo(16)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto ford" id="produto-17">
+                <h2>FORD MUSTANG ECOBOOST 2021/2021</h2>
+                <img src="img/MUSTANG.png" alt="">
+                <button class="like-btn" data-car="MUSTANG ECO 2021">❤️</button>
+                <p>Preço: US$22,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('FORD MUSTANG ECOBOOST 2021', 'Carro 17')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(17)">Mostrar Informações</button>
+                <div class="info-carro" id="info-17">
+                    <img src="img/MUSTANG.png" alt="">
+                    <p>Motor: 2.3  <br>
+                        Potencia: 310cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 56.000
+                    </p>
+                    <button onclick="hideInfo(17)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto especial" id="produto-18">
+                <h2>NISSAN GT-R R34 V-spec 1998/1998</h2>
+                <img src="img/R34.png" alt="">
+                <button class="like-btn" data-car="GT-R34 V-spec 1998">❤️</button>
+                <p id="price-19" data-price="249900">Preço: US$249,900</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('NISSAN GT-R34 1998', 'Carro 18')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(18)">Mostrar Informações</button>
+                <div class="info-carro" id="info-18">
+                    <img src="img/R34.png" alt="">
+                    <p>Motor: 2.6 Twin Turbo  <br>
+                        Potencia: 450cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 6.000
+                    </p>
+                    <button onclick="hideInfo(18)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto tesla" id="produto-19">
+                <h2>TESLA MODEL Y 2021/2021</h2>
+                <img src="img/MODEL Y.png" alt="">
+                <button class="like-btn" data-car="MODEL Y 2021">❤️</button>
+                <p id="price-19" data-price="38990">Preço: US$38,990</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('TESLA MODEL Y 2021', 'Carro 19')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(19)">Mostrar Informações</button>
+                <div class="info-carro" id="info-19">
+                    <img src="img/MODEL Y.png" alt="">
+                    <p>Motor: Eletrico  <br>
+                        Potencia: 350cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 23.000
+                    </p>
+                    <button onclick="hideInfo(19)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto ford" id="produto-20">
+                <h2>FORD RANGER XL 2WD 2021/2021 </h2>
+                <img src="img/RANGER.png" alt="">
+                <button class="like-btn" data-car="RANGER XL 2021">❤️</button>
+                <p id="price-20" data-price="17600">Preço: US$17,600</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('FORD RANGER XL 2021', 'Carro 20')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(20)">Mostrar Informações</button>
+                <div class="info-carro" id="info-20">
+                    <img src="img/RANGER.png" alt="">
+                    <p>Motor: 2.0  <br>
+                        Potencia: 200cv  <br>
+                        Tracao: Traseira <br>
+                        Milhas: 69.000
+                    </p>
+                    <button onclick="hideInfo(20)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto mercedes" id="produto-21">
+                <h2>MERCEDES C180 2017/2018</h2>
+                <img src="img/MERCEDES.png" alt="">
+                <button class="like-btn" data-car="C180 2017">❤️</button>
+                <p id="price-21" data-price="25800">Preço: US$25,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('MERCEDES C180 2017', 'Carro 21')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(21)">Mostrar Informações</button>
+                <div class="info-carro" id="info-21">
+                    <img src="img/MERCEDES.png" alt="">
+                    <p>Motor: 1.6  <br>
+                        Potencia: 156cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 96.000
+                    </p>
+                    <button onclick="hideInfo(21)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto ford" id="produto-22">
+                <h2>FORD FOCUS 2017/2018</h2>
+                <img src="img/FOCUS 2018.png" alt="">
+                <button class="like-btn" data-car="FOCUS 2017">❤️</button>
+                <p id="price-22" data-price="25800">Preço: US$25,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('FORD FOCUS 2017', 'Carro 22')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(22)">Mostrar Informações</button>
+                <div class="info-carro" id="info-22">
+                    <img src="img/FOCUS 2018.png" alt="">
+                    <p>Motor: 2.0  <br>
+                        Potencia: 178cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 112.000
+                    </p>
+                    <button onclick="hideInfo(22)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto nissan" id="produto-23">
+                <h2>NISSAN ALTIMA 2020/2020</h2>
+                <img src="img/ALTIMA.png" alt="">
+                <button class="like-btn" data-car="ALTIMA 2020">❤️</button>
+                <p id="price-23" data-price="25800">Preço: US$25,800</p>
+                <p>1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('NISSAN ALTIMA 2020', 'Carro 23')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(23)">Mostrar Informações</button>
+                <div class="info-carro" id="info-23">
+                    <img src="img/ALTIMA.png" alt="">
+                    <p>Motor: 2.5  <br>
+                        Potencia: 182cv  <br>
+                        Tracao: Dianteira  <br>
+                        Milhas: 105.000
+                    </p>
+                    <button onclick="hideInfo(23)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+            <div class="produto subaru" id="produto-24">
+                <h2>SUBARU LEGACY 2019/2020</h2>
+                <img src="img/LEGACY.png" alt="">
+                <button class="like-btn" data-car="LEGACY 2019">❤️</button>
+                <p>Preço: US$25,800</p>
+                <p id="price-24" data-price="25800">1 Color</p>
+                <button class="adicionar-ao-carrinho" onclick="addToCart('SUBARU LEGACY 2019', 'Carro 24')">Adicionar ao Carrinho</button>
+                <button class="mostrar-info" onclick="showInfo(24)">Mostrar Informações</button>
+                <div class="info-carro" id="info-24">
+                    <img src="img/LEGACY.png" alt="">
+                    <p>Motor: 2.5 Turbo  <br>
+                        Potencia: 184cv  <br>
+                        Tracao: Integral  <br>
+                        Milhas: 46.000
+                    </p>
+                    <button onclick="hideInfo(24)" id="fecharInfo">Fechar</button>
+                </div>
+            </div>
+    </div>
+    <div id="carrinho" style="display:none;">
+        <h2>Carrinho de Compras</h2>
+        <ul id="items"></ul>
+        <p>Total: $<span id="total">0</span></p>
+        <button id="final-compra" onclick="showCheckoutModal()">Finalizar Compra</button>
+    </div>
+    <div id="checkoutModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7);">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 2em; width: 18em;">
+            <h3>Finalizar Compra</h3>
+            <div id="checkoutItems"></div>
+            <h4>Resumo</h4>
+            <p>Carro: <span id="checkoutCarName"></span></p>
+            <p>Total: $<span id="checkoutTotalAmount"></span></p>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep">
+            <br>
+            <label for="payment">Método de Pagamento:</label>
+            <select id="payment">
+                <option value="credit">Cartão de Crédito</option>
+                <option value="debit">Cartão de Débito</option>
+                <option value="paypal">PayPal</option>
+                <option value="saldo">Saldo Conta</option>
+            </select>
+            <br>
+            <h3>Você recebera o carro em um concessionaria ou no conforto da sua casa!</h3>
+            <button onclick="finalizePurchase()" id="button-fin">Finalizar Compra</button>
+            <button onclick="hideCheckoutModal()" id="button-fin">Cancelar</button>
+        </div>
+
+    </div>
+    <div id="pedido-processado" style="display: none;" >
+        <h2>Pedido Processado</h2>
+        <p>O seu pedido foi recebido e está sendo processado.</p>
+        <p>O número do seu pedido é: <span id="numero-pedido"></span></p>
+    </div>
+    <footer>
+        <div class="contato">
+            <h3>Contact</h3>
+            <p>Email: contato@MetaMotors.com</p>
+            <p>Call: 088 995 873</p>
+        </div>
+        <div class="sobre">
+            <h3>Sobre Nós</h3>
+            <p>Somos a Meta Motors, especializada em veículos de alta qualidade. Com Sede em Los Angeles Pronto para dar o melhor atendimento para você!</p>
+        </div>
+        <div class="localizacao">
+            <h3>Localização</h3>
+            <p>Los Feliz Boulevard, Bairro Los Feliz</p>
+            <p>Los Angeles, California</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
