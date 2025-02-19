@@ -1,0 +1,27 @@
+# 🚗 Meta Motors
+
+**Facilitando a vida de quem compra carros com apenas um clique!**
+
+## 📌 Sobre o Projeto
+A **Meta Motors** tem como objetivo tornar a experiência de compra de veículos mais simples e rápida. Com uma plataforma intuitiva e eficiente, os usuários podem acessar diversas opções de carros, gerenciar suas preferências e realizar transações de forma prática e segura.
+
+## 🔥 Funcionalidades
+- 🔑 **Login e Registro**: Acesse sua conta de forma segura e rápida.
+- 👤 **Área do Usuário**: Personalize seu perfil e gerencie suas informações.
+- 🚘 **Catálogo de Carros**: Explore uma vasta gama de veículos disponíveis.
+- 🛒 **Compra Facilitada**: Finalize a compra do seu carro com poucos cliques.
+- ⭐ **Favoritos**: Salve seus veículos preferidos para uma análise futura.
+- 🔍 **Filtros Inteligentes**: Encontre o carro ideal através de filtros avançados.
+- 📩 **Notificações e Suporte**: Receba atualizações e suporte em tempo real.
+
+## 🛠️ Tecnologias Utilizadas
+- **Frontend**: JavaScript
+- **Backend**: Node.js / Express
+- **Banco de Dados**: MySQL
+
+## 📄 Licença
+Este projeto está sob a licença **MIT**. Sinta-se à vontade para utilizá-lo e modificá-lo.
+
+---
+💡 **Meta Motors - Comprando seu carro com apenas um clique!**
+
